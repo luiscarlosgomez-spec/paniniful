@@ -1,0 +1,886 @@
+<html lang="es"><head></head><body class="bg-fifa-dark text-fifa-text antialiased">```html
+
+
+
+    <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="#1a0b2e" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<title>Sticker Gol 2026 - Álbum Virtual</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif']
+                    },
+                    colors: {
+                        fifa: {
+                            dark: '#080410',      /* Deep dark background */
+                            card: '#120822',      /* Card background */
+                            purple: '#8b5cf6',    /* Bright Purple */
+                            magenta: '#ec4899',   /* Magenta */
+                            cyan: '#06b6d4',      /* Cyan for 2026 branding */
+                            green: '#10b981',     /* Success green */
+                            text: '#f8fafc',
+                            gold: '#fbbf24'       /* FWC Special gold */
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-2026': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%)',
+                        'gradient-card': 'linear-gradient(180deg, rgba(22,10,43,1) 0%, rgba(10,5,20,1) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #080410; 
+            color: #f8fafc; 
+            -webkit-tap-highlight-color: transparent; 
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.6); }
+
+        /* Hiding scrollbar for tabs */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Sticker Buttons */
+        .sticker-btn { 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            user-select: none;
+        }
+        .sticker-btn:active { transform: scale(0.92); }
+        
+        .sticker-missing { 
+            background: #190c33; 
+            color: #64748b; 
+            border: 1px solid #2d1854; 
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+        }
+        .sticker-got { 
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); 
+            color: white; 
+            border-color: transparent; 
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); 
+            font-weight: 900;
+        }
+        /* Special styles for FWC (Gold) - Holographic */
+        .sticker-got.fwc-card {
+            background: linear-gradient(135deg, #fbbf24 0%, #fde047 25%, #f59e0b 50%, #fde047 75%, #fbbf24 100%);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite linear;
+            color: #451a03;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4), inset 0 0 10px rgba(255,255,255,0.5);
+            border: 1px solid #fef3c7;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sticker-rep { 
+            position: absolute; 
+            top: -8px; 
+            right: -8px; 
+            background: #ec4899; 
+            color: white; 
+            font-weight: 900; 
+            font-size: 0.75rem; 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border: 2px solid #080410;
+            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.5);
+            z-index: 10;
+        }
+
+        /* Layout & Navigation */
+        .glass-nav { 
+            background: rgba(8, 4, 16, 0.85); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        .tab-content { display: none; padding-bottom: 120px; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .progress-bar-fill { transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .nav-btn.active { color: #06b6d4; }
+        .nav-btn.active i { 
+            text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); 
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Splash Screen */
+        #splash { 
+            position: fixed; 
+            inset: 0; 
+            background: #080410; 
+            z-index: 50; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            transition: opacity 0.5s ease, visibility 0.5s ease; 
+        }
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(139, 92, 246, 0.1);
+            border-left-color: #06b6d4;
+            border-right-color: #ec4899;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        /* Modals */
+        .modal-overlay {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.2s ease;
+        }
+    </style>
+<!-- Splash Screen -->
+<div id="splash">
+<div class="relative mb-6">
+<h1 class="text-7xl font-black bg-clip-text text-transparent bg-gradient-2026 tracking-tighter drop-shadow-2xl">2026</h1>
+<div class="absolute -bottom-2 -right-2 text-2xl drop-shadow-lg">🏆</div>
+</div>
+<p class="text-2xl font-bold tracking-[0.3em] text-white mb-12 uppercase drop-shadow-md">Sticker Gol</p>
+<div class="loader-ring mb-6"></div>
+<p class="text-sm text-fifa-cyan font-medium animate-pulse" id="splash-text">Preparando tu colección...</p>
+</div>
+<!-- Top Header -->
+<header class="fixed top-0 w-full z-40 bg-fifa-dark/90 backdrop-blur-md border-b border-white/5 pt-safe shadow-lg">
+<div class="px-4 py-3">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-gradient-2026 flex items-center justify-center shadow-lg shadow-purple-500/30">
+<i class="fa-solid fa-futbol text-white text-sm"></i>
+</div>
+<h1 class="text-xl font-black tracking-wide text-white">STICKER<span class="text-fifa-cyan">GOL</span></h1>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+<i class="fa-solid fa-trophy text-fifa-gold text-xs"></i>
+<span class="text-sm font-black text-white" id="global-perc">0%</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-gray-800/50 rounded-full h-2 overflow-hidden border border-white/5 backdrop-blur-sm">
+<div class="bg-gradient-2026 h-full rounded-full progress-bar-fill relative shadow-[0_0_10px_rgba(139,92,246,0.5)]" id="global-progress" style="width: 0%">
+<div class="absolute top-0 right-0 bottom-0 left-0 bg-white/20 w-full animate-[pulse_2s_ease-in-out_infinite]"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-[95px] px-4 max-w-3xl mx-auto pb-safe">
+<!-- Tab: Mi Álbum -->
+<div class="tab-content active" id="tab-album">
+<!-- Summary Card -->
+<div class="bg-gradient-2026 p-[1px] rounded-2xl mb-4 shadow-lg shadow-purple-500/10 mt-2">
+<div class="bg-fifa-card rounded-[15px] p-5 relative overflow-hidden flex items-center justify-between">
+<div class="absolute -right-4 -bottom-4 opacity-5 pointer-events-none">
+<i class="fa-solid fa-trophy text-9xl text-white"></i>
+</div>
+<div class="relative z-10">
+<h3 class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Tu Progreso</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-black text-white leading-none" id="summary-got">0</span>
+<span class="text-sm text-gray-500 font-bold" id="summary-total">/0</span>
+</div>
+</div>
+<div class="relative z-10 text-right">
+<div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fifa-cyan to-fifa-purple leading-none drop-shadow-md" id="summary-perc">0%</div>
+<div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Completado</div>
+</div>
+</div>
+</div>
+<!-- Filters & Search -->
+<div class="sticky top-[75px] z-30 bg-fifa-dark/95 backdrop-blur-md py-3 -mx-4 px-4 mb-4 border-b border-white/5 space-y-3 shadow-md">
+<div class="relative">
+<i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
+<input class="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-fifa-cyan/50 focus:ring-1 focus:ring-fifa-cyan/50 transition shadow-inner backdrop-blur-sm" id="search-input" onkeyup="filterTeamsBySearch()" placeholder="Buscar equipo o código (ej. ARG)..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="px-5 py-2 rounded-full bg-gradient-2026 text-white text-sm font-bold whitespace-nowrap shadow-lg shadow-purple-500/20 transition border border-transparent" id="btn-filt-all" onclick="filterTeams('all')">Todos</button>
+<button class="px-5 py-2 rounded-full bg-white/5 text-gray-300 text-sm font-medium whitespace-nowrap border border-white/10 hover:bg-white/10 transition backdrop-blur-sm" id="btn-filt-inc" onclick="filterTeams('incomplete')">Incompletos</button>
+<button class="px-5 py-2 rounded-full bg-white/5 text-gray-300 text-sm font-medium whitespace-nowrap border border-white/10 hover:bg-white/10 transition backdrop-blur-sm" id="btn-filt-com" onclick="filterTeams('complete')">Completados</button>
+</div>
+</div>
+<!-- Teams List -->
+<div class="space-y-4" id="teams-container">
+<!-- Teams rendered via JS -->
+</div>
+</div>
+<!-- Tab: Faltantes -->
+<div class="tab-content pt-4" id="tab-missing">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-2xl bg-fifa-magenta/10 border border-fifa-magenta/20 flex items-center justify-center text-fifa-magenta shadow-[0_0_15px_rgba(236,72,153,0.15)]">
+<i class="fa-solid fa-magnifying-glass text-xl"></i>
+</div>
+<div>
+<h2 class="text-2xl font-black text-white leading-tight">Mis Faltantes</h2>
+<p class="text-sm text-gray-400">Láminas que necesitas</p>
+</div>
+</div>
+<div class="bg-fifa-card rounded-2xl p-5 border border-white/5 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+<div class="absolute top-0 right-0 w-40 h-40 bg-fifa-magenta/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<button class="w-full mb-4 py-3.5 bg-gradient-to-r from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/10 rounded-xl text-sm font-bold text-white transition flex items-center justify-center gap-2 shadow-lg backdrop-blur-sm" onclick="copyToClipboard('missing-list', this)">
+<i class="fa-regular fa-copy"></i> Copiar para compartir
+                </button>
+<div class="relative">
+<div class="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap font-mono bg-black/50 p-5 rounded-xl border border-white/5 h-[60vh] overflow-y-auto custom-scrollbar shadow-inner" id="missing-list"></div>
+</div>
+</div>
+</div>
+<!-- Tab: Repetidas -->
+<div class="tab-content pt-4" id="tab-repeats">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-2xl bg-fifa-cyan/10 border border-fifa-cyan/20 flex items-center justify-center text-fifa-cyan shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+<i class="fa-solid fa-right-left text-xl"></i>
+</div>
+<div>
+<h2 class="text-2xl font-black text-white leading-tight">Mis Repetidas</h2>
+<p class="text-sm text-gray-400">Disponibles para cambio</p>
+</div>
+</div>
+<div class="bg-fifa-card rounded-2xl p-5 border border-white/5 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+<div class="absolute top-0 right-0 w-40 h-40 bg-fifa-cyan/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<button class="w-full mb-4 py-3.5 bg-gradient-to-r from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/10 rounded-xl text-sm font-bold text-white transition flex items-center justify-center gap-2 shadow-lg backdrop-blur-sm" onclick="copyToClipboard('repeats-list', this)">
+<i class="fa-regular fa-copy"></i> Copiar para compartir
+                </button>
+<div class="relative">
+<div class="text-sm text-fifa-cyan leading-relaxed whitespace-pre-wrap font-mono bg-black/50 p-5 rounded-xl border border-white/5 h-[60vh] overflow-y-auto custom-scrollbar shadow-inner" id="repeats-list"></div>
+</div>
+</div>
+</div>
+<!-- Tab: Stats & Settings -->
+<div class="tab-content pt-4" id="tab-stats">
+<h2 class="text-2xl font-black text-white mb-6">Resumen General</h2>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-fifa-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group shadow-lg backdrop-blur-sm">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<i class="fa-solid fa-layer-group text-8xl text-fifa-purple"></i>
+</div>
+<div class="text-4xl font-black text-white mb-1 relative z-10" id="stat-got">0</div>
+<div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold relative z-10">Pegadas</div>
+</div>
+<div class="bg-fifa-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group shadow-lg backdrop-blur-sm">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<i class="fa-regular fa-square text-8xl text-fifa-magenta"></i>
+</div>
+<div class="text-4xl font-black text-fifa-magenta mb-1 relative z-10" id="stat-missing">0</div>
+<div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold relative z-10">Faltantes</div>
+</div>
+<div class="bg-fifa-card p-5 rounded-2xl border border-white/5 relative overflow-hidden group shadow-lg backdrop-blur-sm">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<i class="fa-solid fa-clone text-8xl text-fifa-cyan"></i>
+</div>
+<div class="text-4xl font-black text-fifa-cyan mb-1 relative z-10" id="stat-repeats">0</div>
+<div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold relative z-10">Repetidas</div>
+</div>
+<div class="bg-gradient-2026 p-[1px] rounded-2xl shadow-lg shadow-purple-500/10">
+<div class="bg-fifa-card w-full h-full p-5 rounded-[15px] relative overflow-hidden">
+<div class="text-4xl font-black text-transparent bg-clip-text bg-gradient-2026 mb-1 relative z-10" id="stat-total">0</div>
+<div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold relative z-10">Total Álbum</div>
+</div>
+</div>
+</div>
+<h2 class="text-xl font-black text-white mb-4">Gestión de Datos</h2>
+<div class="space-y-3">
+<button class="w-full p-4 bg-fifa-card border border-white/5 rounded-xl text-left flex justify-between items-center hover:bg-white/5 transition shadow-md backdrop-blur-sm group" onclick="exportData()">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fifa-purple/20 group-hover:text-fifa-purple transition border border-white/5">
+<i class="fa-solid fa-download"></i>
+</div>
+<div>
+<span class="block font-bold text-sm text-white">Exportar Colección</span>
+<span class="block text-xs text-gray-400 mt-0.5">Guardar respaldo (JSON)</span>
+</div>
+</div>
+<i class="fa-solid fa-chevron-right text-gray-600"></i>
+</button>
+<label class="w-full p-4 bg-fifa-card border border-white/5 rounded-xl text-left flex justify-between items-center hover:bg-white/5 transition shadow-md backdrop-blur-sm cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-fifa-cyan/20 group-hover:text-fifa-cyan transition border border-white/5">
+<i class="fa-solid fa-upload"></i>
+</div>
+<div>
+<span class="block font-bold text-sm text-white">Importar Respaldo</span>
+<span class="block text-xs text-gray-400 mt-0.5">Cargar archivo JSON</span>
+</div>
+</div>
+<input accept=".json" class="hidden" id="import-file" onchange="importData(event)" type="file"/>
+<i class="fa-solid fa-chevron-right text-gray-600"></i>
+</label>
+<button class="w-full p-4 bg-red-950/20 border border-red-500/20 text-red-400 rounded-xl text-left flex justify-between items-center hover:bg-red-900/40 transition mt-6 shadow-md backdrop-blur-sm group" onclick="confirmClearData()">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition border border-red-500/10">
+<i class="fa-solid fa-trash"></i>
+</div>
+<span class="font-bold text-sm">Reiniciar Álbum Completo</span>
+</div>
+<i class="fa-solid fa-triangle-exclamation"></i>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full glass-nav pb-safe z-40">
+<div class="flex justify-around items-center h-[75px] max-w-md mx-auto px-2 relative">
+<button class="nav-btn active flex flex-col items-center justify-center w-16 h-full text-gray-500 hover:text-white transition" id="nav-album" onclick="switchTab('album')">
+<i class="fa-solid fa-book-open text-xl mb-1.5"></i>
+<span class="text-[10px] font-bold tracking-widest uppercase">Álbum</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center w-16 h-full text-gray-500 hover:text-white transition" id="nav-missing" onclick="switchTab('missing')">
+<i class="fa-solid fa-magnifying-glass text-xl mb-1.5"></i>
+<span class="text-[10px] font-bold tracking-widest uppercase">Faltan</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center w-16 h-full text-gray-500 hover:text-white transition relative" id="nav-repeats" onclick="switchTab('repeats')">
+<i class="fa-solid fa-right-left text-xl mb-1.5"></i>
+<span class="text-[10px] font-bold tracking-widest uppercase">Repes</span>
+<span class="absolute top-2 right-1 bg-fifa-magenta text-white text-[9px] font-black px-1.5 py-0.5 rounded-full shadow-lg shadow-pink-500/50 hidden border-2 border-[#080410]" id="badge-repeats">0</span>
+</button>
+<button class="nav-btn flex flex-col items-center justify-center w-16 h-full text-gray-500 hover:text-white transition" id="nav-stats" onclick="switchTab('stats')">
+<i class="fa-solid fa-chart-pie text-xl mb-1.5"></i>
+<span class="text-[10px] font-bold tracking-widest uppercase">Stats</span>
+</button>
+</div>
+</nav>
+<!-- Custom Modal for Alerts/Confirms -->
+<div class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4" id="custom-modal">
+<div class="bg-fifa-card border border-white/10 rounded-2xl w-full max-w-sm p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-200" id="modal-content">
+<div class="text-center mb-6" id="modal-icon">
+<i class="fa-solid fa-circle-exclamation text-5xl text-fifa-cyan drop-shadow-lg"></i>
+</div>
+<h3 class="text-xl font-black text-white text-center mb-2" id="modal-title">Título</h3>
+<p class="text-gray-400 text-sm text-center mb-6 leading-relaxed" id="modal-body">Mensaje</p>
+<div class="flex gap-3" id="modal-actions">
+<!-- Botones inyectados dinámicamente -->
+</div>
+</div>
+</div>
+<!-- JavaScript App Logic -->
+<script>
+        // --- 1. CONFIGURACIÓN Y DATOS ---
+        const TEAMS = [
+            // Sección Historia/Especiales
+            { code: 'FWC', name: 'FIFA World Cup™', count: 20 },
+            // Sedes Norteamérica
+            { code: 'USA', name: 'Estados Unidos', count: 20 },
+            { code: 'MEX', name: 'México', count: 20 },
+            { code: 'CAN', name: 'Canadá', count: 20 },
+            // Conmebol
+            { code: 'ARG', name: 'Argentina', count: 20 },
+            { code: 'BRA', name: 'Brasil', count: 20 },
+            { code: 'COL', name: 'Colombia', count: 20 },
+            { code: 'URU', name: 'Uruguay', count: 20 },
+            { code: 'ECU', name: 'Ecuador', count: 20 },
+            { code: 'VEN', name: 'Venezuela', count: 20 },
+            { code: 'PER', name: 'Perú', count: 20 },
+            { code: 'CHI', name: 'Chile', count: 20 },
+            { code: 'PAR', name: 'Paraguay', count: 20 },
+            { code: 'BOL', name: 'Bolivia', count: 20 },
+            // UEFA
+            { code: 'FRA', name: 'Francia', count: 20 },
+            { code: 'ENG', name: 'Inglaterra', count: 20 },
+            { code: 'ESP', name: 'España', count: 20 },
+            { code: 'GER', name: 'Alemania', count: 20 },
+            { code: 'POR', name: 'Portugal', count: 20 },
+            { code: 'ITA', name: 'Italia', count: 20 },
+            { code: 'NED', name: 'Países Bajos', count: 20 },
+            { code: 'CRO', name: 'Croacia', count: 20 },
+            { code: 'BEL', name: 'Bélgica', count: 20 },
+            { code: 'SUI', name: 'Suiza', count: 20 },
+            { code: 'DEN', name: 'Dinamarca', count: 20 },
+            { code: 'SWE', name: 'Suecia', count: 20 },
+            { code: 'POL', name: 'Polonia', count: 20 },
+            // CAF
+            { code: 'MAR', name: 'Marruecos', count: 20 },
+            { code: 'SEN', name: 'Senegal', count: 20 },
+            { code: 'EGY', name: 'Egipto', count: 20 },
+            { code: 'ALG', name: 'Argelia', count: 20 },
+            { code: 'CMR', name: 'Camerún', count: 20 },
+            { code: 'NGA', name: 'Nigeria', count: 20 },
+            { code: 'CIV', name: 'Costa de Marfil', count: 20 },
+            { code: 'GHA', name: 'Ghana', count: 20 },
+            // AFC
+            { code: 'JPN', name: 'Japón', count: 20 },
+            { code: 'KOR', name: 'Corea del Sur', count: 20 },
+            { code: 'KSA', name: 'Arabia Saudita', count: 20 },
+            { code: 'IRN', name: 'Irán', count: 20 },
+            { code: 'AUS', name: 'Australia', count: 20 },
+            { code: 'QAT', name: 'Qatar', count: 20 },
+            { code: 'IRQ', name: 'Irak', count: 20 },
+            { code: 'UAE', name: 'Emiratos Árabes', count: 20 },
+            { code: 'UZB', name: 'Uzbekistán', count: 20 },
+            // OFC y CONCACAF restantes
+            { code: 'NZL', name: 'Nueva Zelanda', count: 20 },
+            { code: 'CRC', name: 'Costa Rica', count: 20 },
+            { code: 'PAN', name: 'Panamá', count: 20 },
+            { code: 'JAM', name: 'Jamaica', count: 20 },
+            { code: 'HON', name: 'Honduras', count: 20 }
+        ];
+
+        let collection = {}; 
+        let db;
+        let currentFilter = 'all';
+
+        // --- 2. INDEXEDDB REPARADO Y OPTIMIZADO ---
+        const initDB = () => {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('StickerGol26DB', 2);
+                
+                request.onupgradeneeded = (e) => {
+                    const database = e.target.result;
+                    if (!database.objectStoreNames.contains('stickers')) {
+                        database.createObjectStore('stickers', { keyPath: 'id' });
+                    }
+                    if (!database.objectStoreNames.contains('cfg')) {
+                        database.createObjectStore('cfg', { keyPath: 'k' });
+                    }
+                };
+
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve();
+                };
+
+                request.onerror = (e) => {
+                    console.error("IndexedDB Error:", e.target.error);
+                    reject(e.target.error);
+                };
+            });
+        };
+
+        const getAllStickers = () => {
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction('stickers', 'readonly');
+                const store = tx.objectStore('stickers');
+                const request = store.getAll();
+                
+                request.onsuccess = () => {
+                    const data = {};
+                    request.result.forEach(item => data[item.id] = item);
+                    resolve(data);
+                };
+                request.onerror = () => reject(request.error);
+            });
+        };
+
+        const saveSticker = (id, data) => {
+            try {
+                const tx = db.transaction('stickers', 'readwrite');
+                const store = tx.objectStore('stickers');
+                store.put({ id, ...data });
+            } catch (e) {
+                console.error("Error guardando lámina:", e);
+                localStorage.setItem(`sg26_backup_${id}`, JSON.stringify(data));
+            }
+        };
+
+        const clearAllStickersDB = () => {
+            return new Promise((resolve) => {
+                const tx = db.transaction('stickers', 'readwrite');
+                const store = tx.objectStore('stickers');
+                store.clear();
+                tx.oncomplete = () => resolve();
+            });
+        };
+
+        // --- 3. LÓGICA PRINCIPAL DE LA APP ---
+        async function boot() {
+            try {
+                document.getElementById('splash-text').innerText = "Iniciando base de datos...";
+                await initDB();
+                
+                document.getElementById('splash-text').innerText = "Cargando colección...";
+                collection = await getAllStickers();
+                
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.startsWith('sg26_backup_')) {
+                        const id = key.replace('sg26_backup_', '');
+                        const data = JSON.parse(localStorage.getItem(key));
+                        collection[id] = data;
+                        saveSticker(id, data); 
+                        localStorage.removeItem(key);
+                    }
+                }
+
+                document.getElementById('splash-text').innerText = "Renderizando álbum...";
+                renderAlbum();
+                updateStats();
+                
+                setTimeout(() => {
+                    const splash = document.getElementById('splash');
+                    splash.style.opacity = '0';
+                    splash.style.visibility = 'hidden';
+                    setTimeout(() => splash.style.display = 'none', 500);
+                }, 800);
+            } catch (e) {
+                console.error("Boot failed:", e);
+                showModal("Error Grave", "No se pudo iniciar la base de datos local. Tu navegador podría estar en modo incógnito estricto o sin espacio.", "error");
+                document.getElementById('splash').style.display = 'none';
+            }
+        }
+
+        // --- 4. RENDERIZADO DEL ÁLBUM ---
+        function renderAlbum() {
+            const container = document.getElementById('teams-container');
+            const fragment = document.createDocumentFragment();
+
+            TEAMS.forEach(team => {
+                let teamGot = 0;
+                for(let i=1; i<=team.count; i++) {
+                    const id = `${team.code}-${i}`;
+                    if(collection[id] && collection[id].got) teamGot++;
+                }
+
+                const isComplete = teamGot === team.count;
+                const status = isComplete ? 'complete' : (teamGot === 0 ? 'empty' : 'incomplete');
+                
+                const el = document.createElement('div');
+                el.className = `bg-fifa-card rounded-2xl border ${isComplete ? 'border-fifa-green/40 shadow-[0_0_15px_rgba(16,185,129,0.15)]' : 'border-white/5'} overflow-hidden transition-all duration-300 team-card backdrop-blur-sm shadow-md`;
+                el.dataset.status = status;
+                el.id = `card-${team.code}`;
+                
+                const headerBg = team.code === 'FWC' ? 'bg-gradient-to-r from-[#2c1605] to-[#160a2b]' : 'bg-gradient-card';
+                const badgeColor = isComplete ? 'bg-fifa-green text-[#080410]' : 'bg-white/10 text-white border border-white/20';
+
+                el.innerHTML = `
+                    <div class="p-4 ${headerBg} flex justify-between items-center cursor-pointer select-none" onclick="toggleTeam('${team.code}')">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-full ${badgeColor} flex items-center justify-center font-black text-xs shadow-inner transition-colors duration-300 backdrop-blur-sm" id="badge-${team.code}">
+                                ${team.code}
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg leading-tight text-white">${team.name}</h3>
+                                <p class="text-[11px] text-gray-500 font-medium uppercase tracking-wider mt-0.5" id="desc-${team.code}">${isComplete ? '¡Completado!' : (teamGot === 0 ? 'Sin iniciar' : 'En progreso')}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-black ${isComplete ? 'text-fifa-green' : 'text-gray-400'} transition-colors duration-300" id="counter-${team.code}">${teamGot}/${team.count}</span>
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300" id="icon-${team.code}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden p-4 bg-black/40 border-t border-white/5 shadow-inner" id="grid-${team.code}">
+                        <!-- Stickers generados dinámicamente al abrir -->
+                    </div>
+                `;
+                fragment.appendChild(el);
+            });
+            
+            container.appendChild(fragment);
+            filterTeamsBySearch();
+        }
+
+        function renderStickersGrid(teamCode) {
+            const team = TEAMS.find(t => t.code === teamCode);
+            const isFWC = team.code === 'FWC';
+            
+            let html = `<div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-10 gap-2.5">`;
+            
+            for(let i=1; i<=team.count; i++) {
+                const id = `${team.code}-${i}`;
+                const st = collection[id] || { got: false, rep: 0 };
+                
+                let btnClass = 'sticker-missing';
+                if(st.got) {
+                    btnClass = isFWC ? 'sticker-got fwc-card' : 'sticker-got';
+                }
+                
+                const repBadge = st.rep > 0 ? `<div class="sticker-rep" onclick="event.stopPropagation(); changeRep('${id}', -1)">${st.rep}</div>` : '';
+                
+                html += `
+                <button class="relative aspect-[3/4] rounded-xl font-bold text-sm flex flex-col items-center justify-center sticker-btn ${btnClass}" 
+                    id="btn-${id}"
+                    onclick="toggleSticker('${id}')" 
+                    oncontextmenu="event.preventDefault(); changeRep('${id}', 1)">
+                    <span class="opacity-60 text-[9px] mb-1 leading-none tracking-wider">${team.code}</span>
+                    <span class="text-base">${i}</span>
+                    ${repBadge}
+                </button>
+                `;
+            }
+            
+            html += `</div>
+            <div class="mt-5 p-3.5 rounded-xl bg-fifa-cyan/10 border border-fifa-cyan/20 flex items-start gap-3 shadow-inner">
+                <i class="fa-solid fa-circle-info text-fifa-cyan mt-0.5"></i>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                    <strong class="text-white">Tap simple</strong> para marcar obtenida.<br>
+                    <strong class="text-white">Mantén presionado</strong> (o click derecho) para agregar repetida.<br>
+                    <strong class="text-white">Tap en repetida</strong> para restarla.
+                </p>
+            </div>`;
+            
+            return html;
+        }
+
+        function toggleTeam(code) {
+            const grid = document.getElementById(`grid-${code}`);
+            const icon = document.getElementById(`icon-${code}`);
+            
+            if (grid.classList.contains('hidden')) {
+                if(grid.innerHTML.trim() === '') {
+                    grid.innerHTML = renderStickersGrid(code);
+                }
+                grid.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                icon.classList.replace('text-gray-400', 'text-white');
+            } else {
+                grid.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                icon.classList.replace('text-white', 'text-gray-400');
+            }
+        }
+
+        // --- 5. INTERACCIÓN DEL USUARIO ---
+        function toggleSticker(id) {
+            if (!collection[id]) collection[id] = { got: false, rep: 0 };
+            
+            collection[id].got = !collection[id].got;
+            if (!collection[id].got) collection[id].rep = 0;
+
+            saveSticker(id, collection[id]);
+            
+            const teamCode = id.split('-')[0];
+            updateSingleStickerButton(id);
+            updateTeamHeader(teamCode);
+            updateStats();
+            
+            if (navigator.vibrate) {
+                navigator.vibrate(collection[id].got ? [30] : [20, 20]);
+            }
+        }
+
+        function changeRep(id, delta) {
+            if (!collection[id]) collection[id] = { got: true, rep: 0 };
+            
+            if (!collection[id].got && delta > 0) {
+                collection[id].got = true; 
+            }
+            
+            collection[id].rep = Math.max(0, (collection[id].rep || 0) + delta);
+            saveSticker(id, collection[id]);
+            
+            updateSingleStickerButton(id);
+            updateTeamHeader(id.split('-')[0]);
+            updateStats();
+            
+            if (navigator.vibrate) navigator.vibrate(40);
+        }
+
+        function updateSingleStickerButton(id) {
+            const btn = document.getElementById(`btn-${id}`);
+            if(!btn) return; 
+            
+            const teamCode = id.split('-')[0];
+            const isFWC = teamCode === 'FWC';
+            const num = id.split('-')[1];
+            const st = collection[id];
+            
+            btn.className = `relative aspect-[3/4] rounded-xl font-bold text-sm flex flex-col items-center justify-center sticker-btn`;
+            
+            if(st.got) {
+                btn.classList.add(isFWC ? 'fwc-card' : 'sticker-got');
+                if(!isFWC) btn.classList.add('sticker-got');
+            } else {
+                btn.classList.add('sticker-missing');
+            }
+            
+            const repBadge = st.rep > 0 ? `<div class="sticker-rep" onclick="event.stopPropagation(); changeRep('${id}', -1)">${st.rep}</div>` : '';
+            
+            btn.innerHTML = `
+                <span class="opacity-60 text-[9px] mb-1 leading-none tracking-wider">${teamCode}</span>
+                <span class="text-base">${num}</span>
+                ${repBadge}
+            `;
+        }
+
+        function updateTeamHeader(code) {
+            const team = TEAMS.find(t => t.code === code);
+            let got = 0;
+            for(let i=1; i<=team.count; i++) {
+                if(collection[`${code}-${i}`] && collection[`${code}-${i}`].got) got++;
+            }
+            
+            const card = document.getElementById(`card-${code}`);
+            const counter = document.getElementById(`counter-${code}`);
+            const badge = document.getElementById(`badge-${code}`);
+            const desc = document.getElementById(`desc-${code}`);
+            
+            counter.innerText = `${got}/${team.count}`;
+            
+            const isComplete = got === team.count;
+            const isEmpty = got === 0;
+            
+            card.dataset.status = isComplete ? 'complete' : (isEmpty ? 'empty' : 'incomplete');
+            
+            if(isComplete) {
+                counter.className = "text-sm font-black text-fifa-green transition-colors duration-300";
+                badge.className = "w-11 h-11 rounded-full bg-fifa-green text-[#080410] flex items-center justify-center font-black text-xs shadow-inner transition-colors duration-300 backdrop-blur-sm";
+                card.classList.add('border-fifa-green/40', 'shadow-[0_0_15px_rgba(16,185,129,0.15)]');
+                card.classList.remove('border-white/5');
+                desc.innerText = "¡Completado!";
+                desc.className = "text-[11px] text-fifa-green font-bold uppercase tracking-wider mt-0.5";
+            } else {
+                counter.className = "text-sm font-black text-gray-400 transition-colors duration-300";
+                badge.className = "w-11 h-11 rounded-full bg-white/10 text-white border border-white/20 flex items-center justify-center font-black text-xs shadow-inner transition-colors duration-300 backdrop-blur-sm";
+                card.classList.remove('border-fifa-green/40', 'shadow-[0_0_15px_rgba(16,185,129,0.15)]');
+                card.classList.add('border-white/5');
+                desc.innerText = isEmpty ? "Sin iniciar" : "En progreso";
+                desc.className = "text-[11px] text-gray-500 font-medium uppercase tracking-wider mt-0.5";
+            }
+            
+            filterTeamsBySearch();
+        }
+
+        // --- 6. ESTADÍSTICAS Y LISTAS ---
+        function updateStats() {
+            let got = 0, reps = 0;
+            const total = TEAMS.reduce((acc, team) => acc + team.count, 0);
+            let missingList = [], repsList = [];
+
+            TEAMS.forEach(team => {
+                let teamMissing = [];
+                let teamReps = [];
+                
+                for(let i=1; i<=team.count; i++) {
+                    const id = `${team.code}-${i}`;
+                    const st = collection[id];
+                    const displayId = `${team.code} ${i}`;
+
+                    if(st && st.got) {
+                        got++;
+                        if(st.rep > 0) {
+                            reps += st.rep;
+                            teamReps.push(`${displayId} (x${st.rep})`);
+                        }
+                    } else {
+                        teamMissing.push(displayId);
+                    }
+                }
+
+                if(teamMissing.length > 0) {
+                    missingList.push(`⚽ *${team.name}*\n${teamMissing.join(', ')}`);
+                }
+                if(teamReps.length > 0) {
+                    repsList.push(`🔄 *${team.name}*\n${teamReps.join(', ')}`);
+                }
+            });
+
+            const perc = total > 0 ? ((got / total) * 100).toFixed(1) : 0;
+            
+            // Tab Stats updates
+            document.getElementById('stat-got').innerText = got;
+            document.getElementById('stat-missing').innerText = total - got;
+            document.getElementById('stat-repeats').innerText = reps;
+            document.getElementById('stat-total').innerText = total;
+            
+            // Global Nav updates
+            document.getElementById('global-perc').innerText = `${Math.floor(perc)}%`;
+            document.getElementById('global-progress').style.width = `${perc}%`;
+
+            // Summary Card updates
+            document.getElementById('summary-got').innerText = got;
+            document.getElementById('summary-total').innerText = `/${total}`;
+            document.getElementById('summary-perc').innerText = `${Math.floor(perc)}%`;
+
+            // Badge nav repetidas
+            const badge = document.getElementById('badge-repeats');
+            if(reps > 0) {
+                badge.innerText = reps > 99 ? '99+' : reps;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const headerText = `🏆 *MI ÁLBUM STICKER GOL 2026*\n📊 Progreso: ${perc}%\n\n`;
+            
+            document.getElementById('missing-list').innerText = missingList.length > 0 
+                ? headerText + `❌ *ME FALTAN (${total - got}):*\n\n` + missingList.join('\n\n') 
+                : '¡Felicidades! Tienes el álbum completamente lleno. 🎉🏆';
+                
+            document.getElementById('repeats-list').innerText = repsList.length > 0 
+                ? headerText + `✅ *TENGO REPETIDAS (${reps}):*\n\n` + repsList.join('\n\n') 
+                : 'No tienes láminas repetidas registradas aún.';
+        }
+
+        // --- 7. FILTROS Y NAVEGACIÓN ---
+        function filterTeams(status) {
+            currentFilter = status;
+            
+            const btnAll = document.getElementById('btn-filt-all');
+            const btnInc = document.getElementById('btn-filt-inc');
+            const btnCom = document.getElementById('btn-filt-com');
+            
+            [btnAll, btnInc, btnCom].forEach(b => {
+                b.className = "px-5 py-2 rounded-full bg-white/5 text-gray-300 text-sm font-medium whitespace-nowrap border border-white/10 hover:bg-white/10 transition backdrop-blur-sm";
+            });
+            
+            const activeBtn = status === 'all' ? btnAll : (status === 'incomplete' ? btnInc : btnCom);
+            activeBtn.className = "px-5 py-2 rounded-full bg-gradient-2026 text-white text-sm font-bold whitespace-nowrap shadow-lg shadow-purple-500/20 transition border border-transparent";
+
+            filterTeamsBySearch();
+        }
+
+        function filterTeamsBySearch() {
+            const queryInput = document.getElementById('search-input');
+            const query = queryInput ? queryInput.value.toLowerCase() : '';
+            
+            document.querySelectorAll('.team-card').forEach(card => {
+                const teamCode = card.id.replace('card-', '');
+                const team = TEAMS.find(t => t.code === teamCode);
+                
+                let matchesSearch = true;
+                if(query) {
+                    matchesSearch = team.name.toLowerCase().includes(query) || team.code.toLowerCase().includes(query);
+                }
+                
+                let matchesFilter = true;
+                if (currentFilter === 'complete' && card.dataset.status !== 'complete') matchesFilter = false;
+                if (currentFilter === 'incomplete' && card.dataset.status === 'complete') matchesFilter = false;
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function switchTab(tabId) {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${</script></body></html>
